@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Gerenciador de Tarefas</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='css/libs/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Gerenciador de Tarefas</h1>
+    <main id="app">
+        <router-view></router-view>
+    </main>
+</div>
+
+<template id="task-list">
+    <div class="actions">
+        <a class="btn btn-default" v-link="{path: '/add-task'}">
+            <span class="glyphicon glyphicon-plus"></span>
+            Adicionar Tarefa
+        </a>
+    </div>
+    <div class="filters row">
+        <div class="form-group col-sm-3">
+            <label for="search-element">Título</label>
+            <input v-model="searchKey" class="form-control" id="search-element" requred/>
+        </div>
+    </div>
+    <table class="table" id="table">
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Prioridade</th>
+            <th class="col-sm-2">Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-item" v-for="task in tasks | filterBy searchKey in 'title'">
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.sequence }}</td>
+            <td>
+                <a class="btn btn-warning btn-xs"
+                   v-link="{name: 'task-edit', params: {task_id: task.id}}">Editar</a>
+                <a class="btn btn-danger btn-xs" v-link="{name: 'task-delete', params: {task_id: task.id}}">Remover</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</template>
+
+<template id="add-task">
+    <h2>Adicionar nova Tarefa</h2>
+    <form v-on:submit="createTask">
+        <div class="form-group">
+            <label for="add-title">Título</label>
+            <input class="form-control" id="add-title" v-model="task.title" required/>
+        </div>
+        <div class="form-group">
+            <label for="add-description">Descrição</label>
+            <textarea class="form-control" id="add-description" rows="10" v-model="task.description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="add-sequence">Prioridade</label>
+            <input type="number" class="form-control" id="add-sequence" v-model="task.sequence" min="1"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a v-link="'/'" class="btn btn-default">Cancelar</a>
+    </form>
+</template>
+
+<template id="task-edit">
+    <h2>Editar Tarefa</h2>
+    <form v-on:submit="updateTask">
+        <div class="form-group">
+            <label for="edit-title">Título</label>
+            <input class="form-control" id="edit-title" v-model="task.title" required/>
+        </div>
+        <div class="form-group">
+            <label for="edit-description">Descrição</label>
+            <textarea class="form-control" id="edit-description" rows="3" v-model="task.description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="edit-sequence">Prioridade</label>
+            <input type="number" class="form-control" id="edit-sequence" v-model="task.sequence"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a v-link="'/'" class="btn btn-default">Cancelar</a>
+    </form>
+</template>
+
+<template id="task-delete">
+    <strong>Remover tarefa {{ task.title }}?</strong>
+    <form v-on:submit="deleteTask">
+        <button type="submit" class="btn btn-danger">Remover</button>
+        <a v-link="'/'" class="btn btn-default">Cancelar</a>
+    </form>
+</template>
+
+</body>
+</html>
+<script src='js/libs/vue.min.js'></script>
+<script src='js/libs/vue-router.min.js'></script>
+<script src='js/libs/vue-resource.min.js'></script>
+
+<script src='js/modules/Tasks/list.js'></script>
+<script src='js/modules/Tasks/create.js'></script>
+<script src='js/modules/Tasks/edit.js'></script>
+<script src='js/modules/Tasks/delete.js'></script>
+
+<script src="js/index.js"></script>

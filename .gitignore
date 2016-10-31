@@ -1,0 +1,30 @@
+# User specific & automatically generated files #
+#################################################
+/gerenciador-tarefas/app/Config/database.php
+/gerenciador-tarefas/app/tmp
+/gerenciador-tarefas/lib/Cake/Console/Templates/skel/tmp/
+/gerenciador-tarefas/plugins
+/gerenciador-tarefas/vendors
+/gerenciador-tarefas/build
+/gerenciador-tarefas/dist
+/gerenciador-tarefas/tags
+gerenciador-tarefas/lib/Cake/Test/test_app/Locale/rule_6_mo/LC_MESSAGES/core.mo
+
+# IDE and editor specific files #
+#################################
+/nbproject
+.idea
+/.project
+/.buildpath
+/.settings/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
