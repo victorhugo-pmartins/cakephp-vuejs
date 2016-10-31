@@ -69,9 +69,9 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => '192.168.10.10',
-		'login' => 'homestead',
-		'password' => 'secret',
+		'host' => 'localhost',
+		'login' => 'user',
+		'password' => 'password',
 		'database' => 'database_name',
 		'prefix' => '',
 		//'encoding' => 'utf8',
