@@ -1,9 +1,4 @@
-TESTE DE CONHECIMENTO
-=====================
-
-Teste desenvolvido com intuito de aplicar para a vaga de Desenvolvedor PHP Pleno.
-
-## GERENCIADOR DE TAREFAS
+# GERENCIADOR DE TAREFAS
 
 Aplicação de gerenciamento de uma lista de tarefas, onde no back-end foi desenvolvido uma Rest API utilizando CakePHP e no front-end uma aplicação SPA feita em VueJS.
 
